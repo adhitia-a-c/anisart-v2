@@ -1,9 +1,6 @@
-import type { Metadata } from "next" // Metadata is server-only
+import type { Metadata } from "next"
 import CustomOrderClientPage from "./CustomOrderClientPage"
 
-// Metadata should ideally be in a separate layout.tsx or a server component page.tsx
-// For a client component, you might define it in a parent layout or use generateMetadata function.
-// For simplicity in this example, I'll keep it here but note the best practice.
 export const metadata: Metadata = {
   title: "Pesan Custom Anisart | Wujudkan Hadiah Impian Anda",
   description:

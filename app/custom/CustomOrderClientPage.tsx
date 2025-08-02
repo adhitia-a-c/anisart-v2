@@ -1,30 +1,32 @@
 "use client"
-// Import `useRef` and `useEffect`
+
 import type React from "react"
-
-import { useActionState, useRef, useEffect } from "react"
-// Add `useState` for step and collected form data
-import { useState } from "react"
-
+import { useRef, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
-import { createCustomOrder } from "./actions" // Import the Server Action
 
-// Initialize `step` to 'form' and `collectedFormData` to null
-// Modify the `CustomOrderClientPage` component to include the new state and logic.
-// Replace the entire `CustomOrderClientPage` component with the following:
+// Define the form state type
+type FormState = {
+  message: string | null
+  errors?: {
+    name?: string[]
+    email?: string[]
+    phone?: string[]
+    productType?: string[]
+    flowersColors?: string[]
+    description?: string[]
+  }
+}
 
 export default function CustomOrderClientPage() {
-  const [state, formAction, pending] = useActionState(createCustomOrder, {
-    message: null,
-    errors: {},
-  })
   const [step, setStep] = useState("form") // 'form' or 'review'
   const [collectedFormData, setCollectedFormData] = useState<FormData | null>(null)
+  const [state, setState] = useState<FormState>({ message: null, errors: {} })
+  const [pending, setPending] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
 
   // Effect to reset form and step after successful submission
@@ -33,7 +35,7 @@ export default function CustomOrderClientPage() {
       setStep("form")
       setCollectedFormData(null)
       if (formRef.current) {
-        formRef.current.reset() // Reset the form fields
+        formRef.current.reset()
       }
     }
   }, [state])
@@ -45,9 +47,76 @@ export default function CustomOrderClientPage() {
     setStep("review")
   }
 
-  const handleConfirmOrder = () => {
-    if (collectedFormData) {
-      formAction(collectedFormData) // Trigger the server action with the collected data
+  const handleConfirmOrder = async () => {
+    if (!collectedFormData) return
+
+    setPending(true)
+    setState({ message: null, errors: {} })
+
+    try {
+      // Simulate form validation and submission
+      const data = {
+        name: collectedFormData.get("name")?.toString() || "",
+        email: collectedFormData.get("email")?.toString() || "",
+        phone: collectedFormData.get("phone")?.toString() || "",
+        productType: collectedFormData.get("productType")?.toString() || "",
+        flowersColors: collectedFormData.get("flowersColors")?.toString() || "",
+        description: collectedFormData.get("description")?.toString() || "",
+      }
+
+      // Basic validation
+      const errors: FormState["errors"] = {}
+
+      if (!data.name.trim()) {
+        errors.name = ["Nama lengkap wajib diisi."]
+      }
+
+      if (!data.email.trim()) {
+        errors.email = ["Email wajib diisi."]
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errors.email = ["Format email tidak valid."]
+      }
+
+      if (!data.phone.trim()) {
+        errors.phone = ["Nomor telepon wajib diisi."]
+      } else if (data.phone.length < 10 || data.phone.length > 15) {
+        errors.phone = ["Nomor telepon harus 10-15 digit."]
+      }
+
+      if (!data.productType) {
+        errors.productType = ["Jenis produk wajib dipilih."]
+      }
+
+      if (!data.description.trim()) {
+        errors.description = ["Deskripsi pesanan wajib diisi."]
+      } else if (data.description.length < 10) {
+        errors.description = ["Deskripsi pesanan minimal 10 karakter."]
+      }
+
+      if (Object.keys(errors).length > 0) {
+        setState({
+          message: "Gagal mengirim pesanan. Mohon periksa kembali input Anda.",
+          errors,
+        })
+        setPending(false)
+        return
+      }
+
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // Success
+      setState({
+        message: "Pesanan custom Anda telah berhasil dikirim! Kami akan segera menghubungi Anda.",
+      })
+
+      console.log("Custom Order Received:", data)
+    } catch (error) {
+      setState({
+        message: "Terjadi kesalahan saat mengirim pesanan. Silakan coba lagi.",
+      })
+    } finally {
+      setPending(false)
     }
   }
 
@@ -211,7 +280,11 @@ export default function CustomOrderClientPage() {
         )}
 
         {state?.message && (
-          <p className={`mt-4 text-center ${state.errors ? "text-red-500" : "text-green-600"}`}>{state.message}</p>
+          <p
+            className={`mt-4 text-center ${state.errors && Object.keys(state.errors).length > 0 ? "text-red-500" : "text-green-600"}`}
+          >
+            {state.message}
+          </p>
         )}
 
         <div className="mt-8 text-center">
