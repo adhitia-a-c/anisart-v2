@@ -67,7 +67,7 @@ export default function GaleriPage() {
               style={{ objectFit: "cover" }}
               className="transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              placeholder="blur" // Added placeholder blur
+              placeholder="blur"
               // For remote images, you would typically provide a blurDataURL here:
               // blurDataURL="data:image/png;base64,..."
             />
@@ -91,7 +91,7 @@ export default function GaleriPage() {
                     fill
                     style={{ objectFit: "contain" }}
                     className="bg-stone-100"
-                    placeholder="blur" // Added placeholder blur
+                    placeholder="blur"
                     // For remote images, you would typically provide a blurDataURL here:
                     // blurDataURL="data:image/png;base64,..."
                   />

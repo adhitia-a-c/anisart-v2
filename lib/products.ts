@@ -4,6 +4,8 @@ export interface Product {
   description: string
   category: "gantungan-kunci" | "dekorasi-rumah" | "hantaran" | "lainnya"
   image: string
+  // You can add a blurDataURL property here for each image if you generate them:
+  // blurDataURL?: string
 }
 
 export const allProducts: Product[] = [
@@ -14,6 +16,8 @@ export const allProducts: Product[] = [
     category: "gantungan-kunci",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6141921995_eatv-Y7AoL2DrMS7h7GhJXjZ262JaLyuTf1.webp",
+    // Example with a placeholder blurDataURL (replace with actual generated one):
+    // blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
   },
   {
     id: "gk-002",
@@ -29,6 +33,8 @@ export const allProducts: Product[] = [
     category: "dekorasi-rumah",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6209349430_sre8-GUWjlNbrMNZMrIT3AtwyW0WTCxLzWc.webp",
+    // Example with a placeholder blurDataURL (replace with actual generated one):
+    // blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
   },
   {
     id: "dr-002",
@@ -44,6 +50,8 @@ export const allProducts: Product[] = [
     category: "hantaran",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_570xN.4932447282_mii9-JgYMd9O7305q3RBBH1x041M5CbCq8x.webp",
+    // Example with a placeholder blurDataURL (replace with actual generated one):
+    // blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
   },
   {
     id: "ht-002",
