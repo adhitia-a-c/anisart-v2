@@ -4,9 +4,14 @@ import { Badge } from "@/components/ui/badge"
 import { Heart, Flower, Sparkles, Star, Instagram, MessageCircle, Mail } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { FadeInSection } from "@/components/ui/fade-in-section" // Import FadeInSection
+import { FadeInSection } from "@/components/ui/fade-in-section"
+import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext, Carousel } from "@/components/ui/carousel" // Added Carousel imports
+import { allProducts } from "@/lib/products" // Corrected import from 'products' to 'allProducts'
 
 export default function AnisartLanding() {
+  // Filter for featured products for the carousel
+  const featuredProducts = allProducts.filter((product) => product.isFeatured)
+
   return (
     <div className="min-h-screen bg-stone-50">
       {/* Header */}
@@ -403,6 +408,53 @@ export default function AnisartLanding() {
         </section>
       </FadeInSection>
 
+      {/* Featured Products Carousel */}
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container space-y-12 px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
+                Produk Unggulan
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Koleksi Terbaik Kami</h2>
+              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                Temukan keindahan dan keunikan dalam setiap karya Anisart.
+              </p>
+            </div>
+          </div>
+          <Carousel className="w-full max-w-sm mx-auto">
+            <CarouselContent>
+              {featuredProducts.map((product) => (
+                <CarouselItem key={product.id}>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
+                        <Image
+                          alt={product.name}
+                          className="aspect-square object-cover rounded-md"
+                          height={200}
+                          src={product.image || "/placeholder.svg"} // Changed from product.imageUrl to product.image
+                          width={200}
+                          placeholder="blur"
+                          blurDataURL={product.blurDataURL || "/placeholder.svg?height=10&width=10"} // Fallback blurDataURL
+                        />
+                        <h3 className="text-lg font-semibold mt-4">{product.name}</h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{product.category}</p>
+                        <Link href={`/produk/${product.id}`} className="mt-2 text-sm text-blue-600 hover:underline">
+                          Lihat Detail
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+
       {/* CTA Final */}
       <FadeInSection threshold={0.1} delay={100}>
         <section className="py-20 bg-gradient-to-br from-orange-600 to-orange-700 text-white">
@@ -524,9 +576,8 @@ export default function AnisartLanding() {
                     hello@anisart.studio
                   </Link>
                 </div>
-                {/* Removed Phone number and icon */}
                 <div className="flex items-center space-x-3">
-                  <MessageCircle className="w-4 h-4" /> {/* WhatsApp Icon */}
+                  <MessageCircle className="w-4 h-4" />
                   <Link
                     href="https://wa.me/6285155151007"
                     target="_blank"

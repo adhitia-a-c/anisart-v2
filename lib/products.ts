@@ -4,8 +4,8 @@ export interface Product {
   description: string
   category: "gantungan-kunci" | "dekorasi-rumah" | "hantaran" | "lainnya"
   image: string
-  // You can add a blurDataURL property here for each image if you generate them:
-  // blurDataURL?: string
+  isFeatured?: boolean // Added isFeatured property
+  blurDataURL?: string // Added blurDataURL property
 }
 
 export const allProducts: Product[] = [
@@ -16,8 +16,9 @@ export const allProducts: Product[] = [
     category: "gantungan-kunci",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6141921995_eatv-Y7AoL2DrMS7h7GhJXjZ262JaLyuTf1.webp",
-    // Example with a placeholder blurDataURL (replace with actual generated one):
-    // blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true, // Marked as featured
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "gk-002",
@@ -25,6 +26,8 @@ export const allProducts: Product[] = [
     description: "Aroma ketenangan dalam genggaman, pengingat momen damai.",
     category: "gantungan-kunci",
     image: "/placeholder.svg?height=300&width=400",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "dr-001",
@@ -33,8 +36,9 @@ export const allProducts: Product[] = [
     category: "dekorasi-rumah",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6209349430_sre8-GUWjlNbrMNZMrIT3AtwyW0WTCxLzWc.webp",
-    // Example with a placeholder blurDataURL (replace with actual generated one):
-    // blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true, // Marked as featured
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "dr-002",
@@ -42,6 +46,8 @@ export const allProducts: Product[] = [
     description: "Sentuhan alami dan artistik untuk mempercantik ruang tamu Anda.",
     category: "dekorasi-rumah",
     image: "/placeholder.svg?height=300&width=400",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "ht-001",
@@ -50,8 +56,9 @@ export const allProducts: Product[] = [
     category: "hantaran",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_570xN.4932447282_mii9-JgYMd9O7305q3RBBH1x041M5CbCq8x.webp",
-    // Example with a placeholder blurDataURL (replace with actual generated one):
-    // blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true, // Marked as featured
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "ht-002",
@@ -59,6 +66,8 @@ export const allProducts: Product[] = [
     description: "Kotak penyimpanan kenangan berharga, dihiasi bunga abadi.",
     category: "hantaran",
     image: "/placeholder.svg?height=300&width=400",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "ln-001",
@@ -66,6 +75,8 @@ export const allProducts: Product[] = [
     description: "Lindungi meja Anda dengan keindahan bunga kering yang diawetkan dalam resin.",
     category: "lainnya",
     image: "/placeholder.svg?height=300&width=400",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
   {
     id: "ln-002",
@@ -73,5 +84,7 @@ export const allProducts: Product[] = [
     description: "Teman setia untuk setiap petualangan membaca Anda.",
     category: "lainnya",
     image: "/placeholder.svg?height=300&width=400",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
   },
 ]
