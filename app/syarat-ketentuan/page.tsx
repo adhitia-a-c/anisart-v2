@@ -1,11 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Mail, MessageCircle, Instagram } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Heart, MessageCircle, Mail, Instagram } from "lucide-react"
+import { FadeInSection } from "@/components/ui/fade-in-section"
 
 export default function SyaratKetentuanPage() {
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col">
-      {/* Header - Replicated from app/page.tsx for consistency */}
+    <div className="min-h-screen bg-stone-50">
+      {/* Header */}
       <header className="sticky top-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -16,6 +18,8 @@ export default function SyaratKetentuanPage() {
                 width={50}
                 height={50}
                 className="rounded-full"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
               />
               <div>
                 <h1 className="text-xl font-serif text-stone-800">Anisart</h1>
@@ -27,149 +31,158 @@ export default function SyaratKetentuanPage() {
               <Link href="/" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Beranda
               </Link>
-              <Link href="/katalog" className="text-stone-700 hover:text-orange-600 transition-colors">
-                Katalog
+              <Link href="/#koleksi" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Koleksi
               </Link>
               <Link href="/custom" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Custom Order
               </Link>
-              <Link href="/tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="/#tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Tentang Kami
               </Link>
               <Link href="/galeri" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Galeri
               </Link>
-              <Link href="/kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="/#kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Kontak
               </Link>
             </nav>
+
+            <div className="flex items-center space-x-3">
+              <Button variant="ghost" size="sm" className="text-stone-700">
+                <Heart className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="text-stone-700">
+                <MessageCircle className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 container mx-auto px-4 py-12 md:py-20">
-        <h1 className="text-4xl font-serif text-stone-800 mb-8 text-center">Syarat & Ketentuan</h1>
-        <div className="prose prose-lg max-w-3xl mx-auto text-stone-700">
-          <p>
-            Selamat datang di Anisart Studio. Dengan mengakses atau menggunakan situs web dan layanan kami, Anda
-            menyetujui untuk terikat oleh Syarat & Ketentuan ini. Harap baca dengan seksama sebelum melakukan pembelian
-            atau menggunakan layanan kami.
-          </p>
-          <h2>1. Ketentuan Umum</h2>
-          <ul>
-            <li>
-              Semua produk Anisart Studio adalah kerajinan tangan (handmade) dan mungkin memiliki sedikit variasi dalam
-              warna, bentuk, atau detail dibandingkan dengan gambar produk. Ini adalah bagian dari keunikan produk
-              handmade.
-            </li>
-            <li>Kami berhak untuk menolak layanan kepada siapa pun karena alasan apa pun setiap saat.</li>
-            <li>
-              Informasi yang diberikan di situs ini adalah untuk tujuan informasi umum saja dan tidak boleh diandalkan
-              sebagai satu-satunya dasar untuk membuat keputusan tanpa berkonsultasi dengan sumber informasi primer,
-              lebih akurat, lebih lengkap, atau lebih tepat waktu.
-            </li>
-          </ul>
-          <h2>2. Produk dan Layanan</h2>
-          <ul>
-            <li>Harga produk kami dapat berubah tanpa pemberitahuan.</li>
-            <li>
-              Kami berhak untuk memodifikasi atau menghentikan Layanan (atau bagian atau kontennya) tanpa pemberitahuan
-              kapan saja.
-            </li>
-            <li>
-              Kami telah berusaha semaksimal mungkin untuk menampilkan warna dan gambar produk kami seakurat mungkin
-              yang muncul di toko. Kami tidak dapat menjamin bahwa tampilan warna monitor komputer Anda akan akurat.
-            </li>
-          </ul>
-          <h2>3. Pesanan Custom</h2>
-          <ul>
-            <li>
-              Untuk pesanan custom, detail desain, warna, dan elemen lainnya akan dikonfirmasi dengan pelanggan sebelum
-              proses produksi dimulai.
-            </li>
-            <li>
-              Perubahan signifikan pada desain setelah konfirmasi dapat dikenakan biaya tambahan atau penundaan waktu
-              produksi.
-            </li>
-            <li>Pembayaran penuh atau uang muka mungkin diperlukan untuk pesanan custom sebelum produksi dimulai.</li>
-          </ul>
-          <h2>4. Pengiriman</h2>
-          <ul>
-            <li>
-              Waktu pengiriman yang disebutkan adalah perkiraan dan dapat bervariasi tergantung pada lokasi dan kondisi
-              kurir.
-            </li>
-            <li>
-              Kami tidak bertanggung jawab atas keterlambatan pengiriman yang disebabkan oleh pihak ketiga (kurir) atau
-              keadaan force majeure.
-            </li>
-            <li>Biaya pengiriman akan dihitung saat checkout dan ditanggung oleh pembeli.</li>
-          </ul>
-          <h2>5. Pengembalian dan Penukaran</h2>
-          <ul>
-            <li>
-              Karena sifat produk kami yang handmade dan seringkali personal/custom, kami tidak menerima pengembalian
-              atau penukaran kecuali produk yang diterima rusak atau tidak sesuai dengan pesanan yang dikonfirmasi.
-            </li>
-            <li>
-              Klaim kerusakan atau ketidaksesuaian harus diajukan dalam waktu 24 jam setelah produk diterima, disertai
-              dengan bukti foto/video unboxing.
-            </li>
-          </ul>
-          <h2>6. Hak Kekayaan Intelektual</h2>
-          <ul>
-            <li>
-              Semua konten di situs ini, termasuk teks, gambar, logo, dan desain, adalah milik Anisart Studio atau
-              pemberi lisensinya dan dilindungi oleh undang-undang hak cipta.
-            </li>
-            <li>
-              Anda tidak diizinkan untuk mereproduksi, menduplikasi, menyalin, menjual, menjual kembali, atau
-              mengeksploitasi bagian mana pun dari Layanan, penggunaan Layanan, atau akses ke Layanan atau kontak apa
-              pun di situs web tempat layanan disediakan, tanpa izin tertulis dari kami.
-            </li>
-          </ul>
-          <h2>7. Perubahan Syarat & Ketentuan</h2>
-          <p>
-            Kami berhak untuk memperbarui, mengubah, atau mengganti bagian mana pun dari Syarat & Ketentuan ini dengan
-            memposting pembaruan dan/atau perubahan ke situs web kami. Merupakan tanggung jawab Anda untuk memeriksa
-            halaman ini secara berkala untuk perubahan.
-          </p>
-          <h2>Hubungi Kami</h2>
-          <p>Jika Anda memiliki pertanyaan tentang Syarat & Ketentuan ini, silakan hubungi kami melalui:</p>
-          <ul className="list-none pl-0 space-y-2">
-            <li className="flex items-center space-x-3">
-              <Mail className="w-4 h-4" />
-              <Link href="mailto:hello@anisart.studio" className="hover:text-orange-600 transition-colors">
-                hello@anisart.studio
-              </Link>
-            </li>
-            <li className="flex items-center space-x-3">
-              <MessageCircle className="w-4 h-4" />
-              <Link
-                href="https://wa.me/6285155151007"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-600 transition-colors"
-              >
-                WhatsApp Kami
-              </Link>
-            </li>
-            <li className="flex items-center space-x-3">
-              <Instagram className="w-4 h-4" />
-              <Link
-                href="https://instagram.com/anisart.studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-600 transition-colors"
-              >
-                @anisart.studio
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </main>
+      {/* Terms and Conditions Content */}
+      <FadeInSection threshold={0.1} delay={100}>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl lg:text-4xl font-serif text-stone-800 mb-8 text-center">Syarat & Ketentuan</h2>
+              <div className="prose prose-stone max-w-none">
+                <p>
+                  Selamat datang di Anisart Studio. Dengan mengakses atau menggunakan situs web kami, Anda setuju untuk
+                  terikat oleh Syarat & Ketentuan ini. Harap baca dengan seksama sebelum melanjutkan.
+                </p>
 
-      {/* Footer - Replicated from app/page.tsx for consistency */}
+                <h3>1. Penggunaan Situs Web</h3>
+                <ul>
+                  <li>Anda harus berusia minimal 18 tahun untuk melakukan pembelian di situs web kami.</li>
+                  <li>
+                    Anda setuju untuk menggunakan situs web kami hanya untuk tujuan yang sah dan sesuai dengan Syarat &
+                    Ketentuan ini.
+                  </li>
+                  <li>
+                    Anda tidak boleh menggunakan situs web kami dengan cara apa pun yang dapat merusak, menonaktifkan,
+                    membebani, atau mengganggu situs web atau mengganggu penggunaan dan kenikmatan situs web oleh pihak
+                    lain.
+                  </li>
+                </ul>
+
+                <h3>2. Produk dan Layanan</h3>
+                <ul>
+                  <li>
+                    Kami berusaha untuk menampilkan produk kami seakurat mungkin, termasuk warna dan detail. Namun, kami
+                    tidak dapat menjamin bahwa tampilan warna pada monitor Anda akan akurat.
+                  </li>
+                  <li>
+                    Semua deskripsi produk atau harga produk dapat berubah sewaktu-waktu tanpa pemberitahuan, atas
+                    kebijakan kami sendiri.
+                  </li>
+                  <li>Kami berhak untuk membatasi jumlah produk atau layanan yang kami tawarkan.</li>
+                </ul>
+
+                <h3>3. Pemesanan dan Pembayaran</h3>
+                <ul>
+                  <li>
+                    Saat Anda melakukan pemesanan, Anda menjamin bahwa semua informasi yang Anda berikan adalah benar
+                    dan akurat, dan bahwa Anda memiliki wewenang untuk menggunakan metode pembayaran yang Anda pilih.
+                  </li>
+                  <li>Semua pesanan tunduk pada ketersediaan dan konfirmasi harga.</li>
+                  <li>Kami berhak untuk menolak pesanan apa pun yang Anda tempatkan pada kami.</li>
+                </ul>
+
+                <h3>4. Pengiriman</h3>
+                <ul>
+                  <li>Kami akan mengirimkan produk ke alamat yang Anda berikan saat pemesanan.</li>
+                  <li>
+                    Waktu pengiriman adalah perkiraan dan tidak dijamin. Kami tidak bertanggung jawab atas keterlambatan
+                    pengiriman yang disebabkan oleh pihak ketiga atau keadaan di luar kendali kami.
+                  </li>
+                </ul>
+
+                <h3>5. Pengembalian dan Penukaran</h3>
+                <ul>
+                  <li>
+                    Karena sifat produk kami yang handmade dan seringkali personal, kami tidak menerima pengembalian
+                    atau penukaran kecuali produk yang diterima rusak atau cacat.
+                  </li>
+                  <li>
+                    Klaim atas produk yang rusak atau cacat harus diajukan dalam waktu 3 hari setelah penerimaan produk,
+                    disertai dengan bukti foto atau video.
+                  </li>
+                </ul>
+
+                <h3>6. Hak Kekayaan Intelektual</h3>
+                <ul>
+                  <li>
+                    Semua konten di situs web ini, termasuk teks, grafik, logo, gambar, dan perangkat lunak, adalah
+                    milik Anisart Studio atau pemberi lisensinya dan dilindungi oleh undang-undang hak cipta.
+                  </li>
+                  <li>
+                    Anda tidak boleh mereproduksi, mendistribusikan, memodifikasi, membuat karya turunan dari,
+                    menampilkan secara publik, melakukan secara publik, menerbitkan ulang, mengunduh, menyimpan, atau
+                    mentransmisikan materi apa pun di situs web kami, kecuali diizinkan secara tegas oleh Syarat &
+                    Ketentuan ini.
+                  </li>
+                </ul>
+
+                <h3>7. Batasan Tanggung Jawab</h3>
+                <ul>
+                  <li>
+                    Anisart Studio tidak akan bertanggung jawab atas kerugian langsung, tidak langsung, insidental,
+                    konsekuensial, atau hukuman yang timbul dari penggunaan atau ketidakmampuan Anda untuk menggunakan
+                    situs web atau produk kami.
+                  </li>
+                </ul>
+
+                <h3>8. Perubahan Syarat & Ketentuan</h3>
+                <p>
+                  Kami berhak untuk memperbarui, mengubah, atau mengganti bagian mana pun dari Syarat & Ketentuan ini
+                  dengan memposting pembaruan dan/atau perubahan ke situs web kami. Merupakan tanggung jawab Anda untuk
+                  memeriksa halaman ini secara berkala untuk perubahan.
+                </p>
+
+                <h3>9. Hukum yang Mengatur</h3>
+                <p>Syarat & Ketentuan ini akan diatur dan ditafsirkan sesuai dengan hukum Indonesia.</p>
+
+                <h3>Hubungi Kami</h3>
+                <p>Jika Anda memiliki pertanyaan tentang Syarat & Ketentuan ini, silakan hubungi kami:</p>
+                <ul>
+                  <li>
+                    Melalui email: <Link href="mailto:hello@anisart.studio">hello@anisart.studio</Link>
+                  </li>
+                  <li>
+                    Melalui WhatsApp:{" "}
+                    <Link href="https://wa.me/6285155151007" target="_blank" rel="noopener noreferrer">
+                      WhatsApp Kami
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* Footer */}
       <footer id="kontak" className="bg-stone-800 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
@@ -181,6 +194,8 @@ export default function SyaratKetentuanPage() {
                   width={40}
                   height={40}
                   className="rounded-full"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
                 />
                 <div>
                   <h3 className="text-xl font-serif">Anisart</h3>
@@ -203,7 +218,7 @@ export default function SyaratKetentuanPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/katalog" className="hover:text-white transition-colors">
+                  <Link href="/#koleksi" className="hover:text-white transition-colors">
                     Koleksi
                   </Link>
                 </li>
@@ -213,7 +228,7 @@ export default function SyaratKetentuanPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/tentang" className="hover:text-white transition-colors">
+                  <Link href="/#tentang" className="hover:text-white transition-colors">
                     Tentang Kami
                   </Link>
                 </li>

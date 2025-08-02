@@ -5,11 +5,10 @@ import { Heart, Flower, Sparkles, Star, Instagram, MessageCircle, Mail } from "l
 import Image from "next/image"
 import Link from "next/link"
 import { FadeInSection } from "@/components/ui/fade-in-section"
-import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext, Carousel } from "@/components/ui/carousel" // Added Carousel imports
-import { allProducts } from "@/lib/products" // Corrected import from 'products' to 'allProducts'
+import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext, Carousel } from "@/components/ui/carousel"
+import { allProducts } from "@/lib/products"
 
 export default function AnisartLanding() {
-  // Filter for featured products for the carousel
   const featuredProducts = allProducts.filter((product) => product.isFeatured)
 
   return (
@@ -25,6 +24,8 @@ export default function AnisartLanding() {
                 width={50}
                 height={50}
                 className="rounded-full"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of Anisart Studio logo, a stylized flower with text
               />
               <div>
                 <h1 className="text-xl font-serif text-stone-800">Anisart</h1>
@@ -33,25 +34,24 @@ export default function AnisartLanding() {
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              {/* Changed Link to <a> for smooth scroll to section */}
-              <a href="#beranda" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="#beranda" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Beranda
-              </a>
-              <a href="#koleksi" className="text-stone-700 hover:text-orange-600 transition-colors">
+              </Link>
+              <Link href="#koleksi" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Koleksi
-              </a>
+              </Link>
               <Link href="/custom" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Custom Order
               </Link>
-              <a href="#tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="#tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Tentang Kami
-              </a>
+              </Link>
               <Link href="/galeri" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Galeri
               </Link>
-              <a href="#kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="#kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Kontak
-              </a>
+              </Link>
             </nav>
 
             <div className="flex items-center space-x-3">
@@ -110,13 +110,15 @@ export default function AnisartLanding() {
               <div className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6209349430_sre8-GUWjlNbrMNZMrIT3AtwyW0WTCxLzWc.webp"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6209349430_sre8-GUWjlNbrMNZMrIT3AtwyW0WTCxLzWc.avif"
                     alt="Anisart Resin Flower Art"
                     width={600}
                     height={600}
                     className="w-full h-auto object-cover"
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of a hexagonal resin art piece with a yellow flower inside
                   />
                 </div>
                 <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-200 rounded-full opacity-60"></div>
@@ -145,12 +147,14 @@ export default function AnisartLanding() {
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6141921995_eatv-Y7AoL2DrMS7h7GhJXjZ262JaLyuTf1.webp"
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6141921995_eatv-Y7AoL2DrMS7h7GhJXjZ262JaLyuTf1.avif"
                       alt="Gantungan Kunci Personal"
                       width={400}
                       height={300}
                       className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of a resin keychain with a red rose inside
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
@@ -180,6 +184,8 @@ export default function AnisartLanding() {
                       height={300}
                       className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of a traditional ethnic home decoration
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
@@ -203,12 +209,14 @@ export default function AnisartLanding() {
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_570xN.4932447282_mii9-JgYMd9O7305q3RBBH1x041M5CbCq8x.webp"
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_570xN.4932447282_mii9-JgYMd9O7305q3RBBH1x041M5CbCq8x.avif"
                       alt="Hantaran Istimewa"
                       width={400}
                       height={300}
                       className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of a wedding frame with dried flowers and resin
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
@@ -314,12 +322,14 @@ export default function AnisartLanding() {
 
               <div className="relative">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/921e2eb2a180a2242a26fca6b87c8ec91785d3c7f0fe65d1023369224a99ac96.jpg-FT4di4Qug09YWvbdZXMjWduW2c5eQ3.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/921e2eb2a180a2242a26fca6b87c8ec91785d3c7f0fe65d1023369224a99ac96.avif"
                   alt="Anisart Crafting Process"
                   width={600}
                   height={400}
                   className="rounded-2xl shadow-xl"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of hands crafting resin art with flowers
                 />
               </div>
             </div>
@@ -433,10 +443,13 @@ export default function AnisartLanding() {
                           alt={product.name}
                           className="aspect-square object-cover rounded-md"
                           height={200}
-                          src={product.image || "/placeholder.svg"} // Changed from product.imageUrl to product.image
+                          src={product.image || "/placeholder.avif"} // Changed to .avif
                           width={200}
                           placeholder="blur"
-                          blurDataURL={product.blurDataURL || "/placeholder.svg?height=10&width=10"} // Fallback blurDataURL
+                          blurDataURL={
+                            product.blurDataURL ||
+                            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+                          } // Kept base64 PNG
                         />
                         <h3 className="text-lg font-semibold mt-4">{product.name}</h3>
                         <p className="text-sm text-gray-500 dark:text-gray-400">{product.category}</p>
@@ -502,6 +515,8 @@ export default function AnisartLanding() {
                   width={40}
                   height={40}
                   className="rounded-full"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" // Blurred image of Anisart Studio logo, a stylized flower with text
                 />
                 <div>
                   <h3 className="text-xl font-serif">Anisart</h3>
@@ -519,14 +534,14 @@ export default function AnisartLanding() {
               <h4 className="font-semibold mb-4">Navigasi</h4>
               <ul className="space-y-2 text-stone-400">
                 <li>
-                  <a href="#beranda" className="hover:text-white transition-colors">
+                  <Link href="#beranda" className="hover:text-white transition-colors">
                     Beranda
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#koleksi" className="hover:text-white transition-colors">
+                  <Link href="#koleksi" className="hover:text-white transition-colors">
                     Koleksi
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link href="/custom" className="hover:text-white transition-colors">
@@ -534,9 +549,9 @@ export default function AnisartLanding() {
                   </Link>
                 </li>
                 <li>
-                  <a href="#tentang" className="hover:text-white transition-colors">
+                  <Link href="#tentang" className="hover:text-white transition-colors">
                     Tentang Kami
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

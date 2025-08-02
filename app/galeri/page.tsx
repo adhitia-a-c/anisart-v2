@@ -1,114 +1,233 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import { allProducts, type Product } from "@/lib/products"
-import { useState, useCallback } from "react"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Heart, MessageCircle, Mail, Instagram } from "lucide-react"
+import { FadeInSection } from "@/components/ui/fade-in-section"
+import { allProducts } from "@/lib/products"
 
-export default function GaleriPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all")
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
-
-  const categories = [
-    { id: "all", name: "Semua Produk" },
-    { id: "gantungan-kunci", name: "Gantungan Kunci" },
-    { id: "dekorasi-rumah", name: "Dekorasi Rumah" },
-    { id: "hantaran", name: "Hantaran" },
-    { id: "lainnya", name: "Lainnya" },
-  ]
-
-  const filteredProducts =
-    selectedCategory === "all" ? allProducts : allProducts.filter((product) => product.category === selectedCategory)
-
-  const handleProductClick = useCallback((product: Product) => {
-    setSelectedProduct(product)
-    setIsDialogOpen(true)
-  }, [])
-
+export default function GalleryPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center bg-stone-50 p-8">
-      <h1 className="text-4xl font-serif text-stone-800 mb-4 text-center">Galeri Anisart</h1>
-      <p className="text-lg text-stone-600 mb-8 max-w-2xl text-center">
-        Temukan inspirasi dari berbagai kreasi resin handmade kami dengan bunga asli dan sentuhan etnik.
-      </p>
+    <div className="min-h-screen bg-stone-50">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-Anisart%20STudio-lq9WZlhA2XTxT0IeytJ00OTBW7cPGs.png"
+                alt="Anisart Studio"
+                width={50}
+                height={50}
+                className="rounded-full"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+              />
+              <div>
+                <h1 className="text-xl font-serif text-stone-800">Anisart</h1>
+                <p className="text-xs text-stone-600">Studio</p>
+              </div>
+            </div>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-8">
-        {categories.map((category) => (
-          <Button
-            key={category.id}
-            variant={selectedCategory === category.id ? "default" : "outline"}
-            onClick={() => setSelectedCategory(category.id)}
-            className={
-              selectedCategory === category.id
-                ? "bg-orange-600 text-white hover:bg-orange-700"
-                : "border-orange-600 text-orange-600 hover:bg-orange-50"
-            }
-          >
-            {category.name}
-          </Button>
-        ))}
-      </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Beranda
+              </Link>
+              <Link href="/#koleksi" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Koleksi
+              </Link>
+              <Link href="/custom" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Custom Order
+              </Link>
+              <Link href="/#tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Tentang Kami
+              </Link>
+              <Link href="/galeri" className="text-orange-600 font-semibold">
+                Galeri
+              </Link>
+              <Link href="/#kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Kontak
+              </Link>
+            </nav>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 w-full max-w-6xl">
-        {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            onClick={() => handleProductClick(product)}
-            className="relative w-full h-64 rounded-lg overflow-hidden shadow-lg group cursor-pointer"
-          >
-            <Image
-              src={product.image || "/placeholder.svg"}
-              alt={product.name}
-              fill
-              style={{ objectFit: "cover" }}
-              className="transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              placeholder="blur"
-              // For remote images, you would typically provide a blurDataURL here:
-              // blurDataURL="data:image/png;base64,..."
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
-              <span className="text-white text-lg font-semibold">{product.name}</span>
+            <div className="flex items-center space-x-3">
+              <Button variant="ghost" size="sm" className="text-stone-700">
+                <Heart className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="text-stone-700">
+                <MessageCircle className="w-4 h-4" />
+              </Button>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </header>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[425px] md:max-w-2xl lg:max-w-3xl p-6">
-          {selectedProduct && (
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-stone-800">{selectedProduct.name}</DialogTitle>
-              <DialogDescription className="text-stone-600">
-                <div className="relative w-full h-64 sm:h-80 md:h-96 mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={selectedProduct.image || "/placeholder.svg"}
-                    alt={selectedProduct.name}
-                    fill
-                    style={{ objectFit: "contain" }}
-                    className="bg-stone-100"
-                    placeholder="blur"
-                    // For remote images, you would typically provide a blurDataURL here:
-                    // blurDataURL="data:image/png;base64,..."
-                  />
+      {/* Gallery Section */}
+      <FadeInSection threshold={0.1} delay={100}>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-serif text-stone-800 mb-4">Galeri Karya Anisart</h2>
+              <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+                Jelajahi koleksi lengkap kerajinan resin handmade kami. Setiap karya adalah perpaduan seni, bunga asli,
+                dan sentuhan budaya.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {allProducts.map((product) => (
+                <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 border-stone-200">
+                  <CardContent className="p-0">
+                    <div className="relative overflow-hidden rounded-t-lg">
+                      <Image
+                        src={product.image || "/placeholder.avif"}
+                        alt={product.name}
+                        width={400}
+                        height={300}
+                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        placeholder="blur"
+                        blurDataURL={
+                          product.blurDataURL ||
+                          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+                        }
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div className="p-4 space-y-2">
+                      <h3 className="text-lg font-serif text-stone-800">{product.name}</h3>
+                      <p className="text-sm text-stone-600">{product.category}</p>
+                      <Link href={`/produk/${product.id}`} className="text-orange-600 hover:underline text-sm">
+                        Lihat Detail
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* Footer */}
+      <footer id="kontak" className="bg-stone-800 text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-Anisart%20STudio-lq9WZlhA2XTxT0IeytJ00OTBW7cPGs.png"
+                  alt="Anisart Studio"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+                />
+                <div>
+                  <h3 className="text-xl font-serif">Anisart</h3>
+                  <p className="text-sm text-stone-400">Studio</p>
                 </div>
-                <p className="mb-2">{selectedProduct.description}</p>
-                <Badge className="bg-orange-200 text-orange-800 hover:bg-orange-200">
-                  {categories.find((cat) => cat.id === selectedProduct.category)?.name || selectedProduct.category}
-                </Badge>
-              </DialogDescription>
-            </DialogHeader>
-          )}
-        </DialogContent>
-      </Dialog>
+              </div>
+              <p className="text-stone-400">
+                Hadiah dari Hati, Buatan Tangan.
+                <br />
+                Setiap Bunga Adalah Cerita.
+              </p>
+            </div>
 
-      <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3">
-        <Link href="/">Kembali ke Beranda</Link>
-      </Button>
+            <div>
+              <h4 className="font-semibold mb-4">Navigasi</h4>
+              <ul className="space-y-2 text-stone-400">
+                <li>
+                  <Link href="/" className="hover:text-white transition-colors">
+                    Beranda
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#koleksi" className="hover:text-white transition-colors">
+                    Koleksi
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/custom" className="hover:text-white transition-colors">
+                    Custom Order
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#tentang" className="hover:text-white transition-colors">
+                    Tentang Kami
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Bantuan</h4>
+              <ul className="space-y-2 text-stone-400">
+                <li>
+                  <Link href="/faq" className="hover:text-white transition-colors">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/kebijakan-privasi" className="hover:text-white transition-colors">
+                    Kebijakan Privasi
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/syarat-ketentuan" className="hover:text-white transition-colors">
+                    Syarat & Ketentuan
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/panduan-perawatan" className="hover:text-white transition-colors">
+                    Panduan Perawatan
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Hubungi Kami</h4>
+              <div className="space-y-3 text-stone-400">
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-4 h-4" />
+                  <Link href="mailto:hello@anisart.studio" className="hover:text-white transition-colors">
+                    hello@anisart.studio
+                  </Link>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <MessageCircle className="w-4 h-4" />
+                  <Link
+                    href="https://wa.me/6285155151007"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    WhatsApp Kami
+                  </Link>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Instagram className="w-4 h-4" />
+                  <Link
+                    href="https://instagram.com/anisart.studio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    @anisart.studio
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-stone-700 mt-12 pt-8 text-center text-stone-400">
+            <p>&copy; {new Date().getFullYear()} Anisart Studio. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

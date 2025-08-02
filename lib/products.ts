@@ -1,90 +1,104 @@
 export interface Product {
   id: string
   name: string
-  description: string
-  category: "gantungan-kunci" | "dekorasi-rumah" | "hantaran" | "lainnya"
+  category: string
   image: string
-  isFeatured?: boolean // Added isFeatured property
-  blurDataURL?: string // Added blurDataURL property
+  blurDataURL?: string
+  isFeatured?: boolean
 }
 
 export const allProducts: Product[] = [
   {
-    id: "gk-001",
-    name: "Gantungan Kunci Mawar Abadi",
-    description: "Simbol kecil penuh makna, setia menemani langkahmu. Abadikan senyuman, genggam kenangan.",
-    category: "gantungan-kunci",
+    id: "1",
+    name: "Gantungan Kunci Bunga Mawar",
+    category: "Gantungan Kunci",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6141921995_eatv-Y7AoL2DrMS7h7GhJXjZ262JaLyuTf1.webp",
-    isFeatured: true, // Marked as featured
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6141921995_eatv-Y7AoL2DrMS7h7GhJXjZ262JaLyuTf1.avif",
     blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true,
   },
   {
-    id: "gk-002",
-    name: "Gantungan Kunci Lavender Tenang",
-    description: "Aroma ketenangan dalam genggaman, pengingat momen damai.",
-    category: "gantungan-kunci",
-    image: "/placeholder.svg?height=300&width=400",
-    blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
-  },
-  {
-    id: "dr-001",
-    name: "Dekorasi Hexagonal Matahari",
-    description: "Keindahan yang menghangatkan ruangan, membawa sentuhan identitas lokal ke setiap sudut hunian.",
-    category: "dekorasi-rumah",
+    id: "2",
+    name: "Dekorasi Meja Etnik",
+    category: "Dekorasi Rumah",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6209349430_sre8-GUWjlNbrMNZMrIT3AtwyW0WTCxLzWc.webp",
-    isFeatured: true, // Marked as featured
-    blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/91I6t4K-S0L.jpg-0EYuWo6gTBzRqUIh1DFZZxh5my67fJ.jpeg",
+    blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true,
   },
   {
-    id: "dr-002",
-    name: "Dekorasi Meja Etnik Daun",
-    description: "Sentuhan alami dan artistik untuk mempercantik ruang tamu Anda.",
-    category: "dekorasi-rumah",
-    image: "/placeholder.svg?height=300&width=400",
-    blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
-  },
-  {
-    id: "ht-001",
-    name: "Hantaran Bingkai Pernikahan",
-    description: "Tradisi, cinta, dan keindahan dalam satu bingkisan sakral—hadiah untuk awal cerita baru.",
-    category: "hantaran",
+    id: "3",
+    name: "Hantaran Pernikahan Bunga Kering",
+    category: "Hantaran",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_570xN.4932447282_mii9-JgYMd9O7305q3RBBH1x041M5CbCq8x.webp",
-    isFeatured: true, // Marked as featured
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_570xN.4932447282_mii9-JgYMd9O7305q3RBBH1x041M5CbCq8x.avif",
     blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true,
   },
   {
-    id: "ht-002",
-    name: "Hantaran Kotak Kenangan",
-    description: "Kotak penyimpanan kenangan berharga, dihiasi bunga abadi.",
-    category: "hantaran",
-    image: "/placeholder.svg?height=300&width=400",
+    id: "4",
+    name: "Resin Art Hexagonal Kuning",
+    category: "Resin Art",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/il_fullxfull.6209349430_sre8-GUWjlNbrMNZMrIT3AtwyW0WTCxLzWc.avif",
     blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: true,
   },
   {
-    id: "ln-001",
-    name: "Set Coaster Bunga Kering",
-    description: "Lindungi meja Anda dengan keindahan bunga kering yang diawetkan dalam resin.",
-    category: "lainnya",
-    image: "/placeholder.svg?height=300&width=400",
+    id: "5",
+    name: "Kalung Resin Bunga Ungu",
+    category: "Perhiasan",
+    image: "/placeholder.avif",
     blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: false,
   },
   {
-    id: "ln-002",
-    name: "Pembatas Buku Bunga Mini",
-    description: "Teman setia untuk setiap petualangan membaca Anda.",
-    category: "lainnya",
-    image: "/placeholder.svg?height=300&width=400",
+    id: "6",
+    name: "Pembatas Buku Daun Emas",
+    category: "Aksesoris",
+    image: "/placeholder.avif",
     blurDataURL:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", // Placeholder, replace with actual
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: false,
+  },
+  {
+    id: "7",
+    name: "Coaster Bunga Daisy",
+    category: "Dekorasi Rumah",
+    image: "/placeholder.avif",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: false,
+  },
+  {
+    id: "8",
+    name: "Lampu Tidur Bunga Sakura",
+    category: "Dekorasi Rumah",
+    image: "/placeholder.avif",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: false,
+  },
+  {
+    id: "9",
+    name: "Cincin Resin Bunga Kecil",
+    category: "Perhiasan",
+    image: "/placeholder.avif",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: false,
+  },
+  {
+    id: "10",
+    name: "Pigura Foto Bunga Kering",
+    category: "Hantaran",
+    image: "/placeholder.avif",
+    blurDataURL:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    isFeatured: false,
   },
 ]

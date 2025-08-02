@@ -1,11 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Mail, MessageCircle, Instagram } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Heart, MessageCircle, Mail, Instagram } from "lucide-react"
+import { FadeInSection } from "@/components/ui/fade-in-section"
 
 export default function KebijakanPrivasiPage() {
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col">
-      {/* Header - Replicated from app/page.tsx for consistency */}
+    <div className="min-h-screen bg-stone-50">
+      {/* Header */}
       <header className="sticky top-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -16,6 +18,8 @@ export default function KebijakanPrivasiPage() {
                 width={50}
                 height={50}
                 className="rounded-full"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
               />
               <div>
                 <h1 className="text-xl font-serif text-stone-800">Anisart</h1>
@@ -27,121 +31,136 @@ export default function KebijakanPrivasiPage() {
               <Link href="/" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Beranda
               </Link>
-              <Link href="/katalog" className="text-stone-700 hover:text-orange-600 transition-colors">
-                Katalog
+              <Link href="/#koleksi" className="text-stone-700 hover:text-orange-600 transition-colors">
+                Koleksi
               </Link>
               <Link href="/custom" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Custom Order
               </Link>
-              <Link href="/tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="/#tentang" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Tentang Kami
               </Link>
               <Link href="/galeri" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Galeri
               </Link>
-              <Link href="/kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
+              <Link href="/#kontak" className="text-stone-700 hover:text-orange-600 transition-colors">
                 Kontak
               </Link>
             </nav>
+
+            <div className="flex items-center space-x-3">
+              <Button variant="ghost" size="sm" className="text-stone-700">
+                <Heart className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="text-stone-700">
+                <MessageCircle className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 container mx-auto px-4 py-12 md:py-20">
-        <h1 className="text-4xl font-serif text-stone-800 mb-8 text-center">Kebijakan Privasi</h1>
-        <div className="prose prose-lg max-w-3xl mx-auto text-stone-700">
-          <p>
-            Selamat datang di Kebijakan Privasi Anisart Studio. Kami sangat menghargai kepercayaan Anda dan berkomitmen
-            untuk melindungi informasi pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan,
-            menggunakan, dan melindungi informasi Anda saat Anda mengunjungi situs web kami atau menggunakan layanan
-            kami.
-          </p>
-          <h2>Informasi yang Kami Kumpulkan</h2>
-          <p>
-            Kami mengumpulkan informasi yang Anda berikan langsung kepada kami, seperti saat Anda membuat pesanan,
-            mendaftar untuk buletin kami, atau menghubungi kami. Informasi ini dapat meliputi:
-          </p>
-          <ul>
-            <li>Nama lengkap</li>
-            <li>Alamat email</li>
-            <li>Alamat pengiriman</li>
-            <li>Nomor telepon</li>
-            <li>Detail pembayaran (melalui penyedia layanan pembayaran pihak ketiga yang aman)</li>
-            <li>Informasi lain yang Anda pilih untuk berikan kepada kami</li>
-          </ul>
-          <p>
-            Kami juga secara otomatis mengumpulkan informasi tertentu saat Anda mengakses dan menggunakan situs web
-            kami, termasuk alamat IP Anda, jenis browser, sistem operasi, halaman yang Anda kunjungi, dan waktu akses.
-          </p>
-          <h2>Bagaimana Kami Menggunakan Informasi Anda</h2>
-          <p>Kami menggunakan informasi yang kami kumpulkan untuk berbagai tujuan, termasuk:</p>
-          <ul>
-            <li>Memproses dan memenuhi pesanan Anda</li>
-            <li>Menyediakan layanan pelanggan dan dukungan</li>
-            <li>Mengirimkan pembaruan pesanan dan informasi terkait</li>
-            <li>Mengirimkan buletin, promosi, dan informasi pemasaran lainnya (jika Anda berlangganan)</li>
-            <li>Meningkatkan situs web dan layanan kami</li>
-            <li>Mencegah penipuan dan memastikan keamanan</li>
-            <li>Mematuhi kewajiban hukum</li>
-          </ul>
-          <h2>Pembagian Informasi</h2>
-          <p>
-            Kami tidak menjual, menyewakan, atau memperdagangkan informasi pribadi Anda kepada pihak ketiga. Kami dapat
-            membagikan informasi Anda dengan penyedia layanan pihak ketiga yang membantu kami dalam mengoperasikan
-            bisnis kami (misalnya, penyedia layanan pengiriman, pemroses pembayaran), dengan syarat mereka setuju untuk
-            menjaga kerahasiaan informasi Anda.
-          </p>
-          <h2>Keamanan Data</h2>
-          <p>
-            Kami menerapkan langkah-langkah keamanan yang wajar untuk melindungi informasi pribadi Anda dari akses,
-            penggunaan, atau pengungkapan yang tidak sah. Namun, tidak ada metode transmisi data melalui internet atau
-            penyimpanan elektronik yang 100% aman.
-          </p>
-          <h2>Perubahan pada Kebijakan Privasi Ini</h2>
-          <p>
-            Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Setiap perubahan akan diposting di halaman
-            ini, dan tanggal "Terakhir Diperbarui" akan direvisi. Kami mendorong Anda untuk meninjau Kebijakan Privasi
-            ini secara berkala.
-          </p>
-          <h2>Hubungi Kami</h2>
-          <p>
-            Jika Anda memiliki pertanyaan atau kekhawatiran tentang Kebijakan Privasi ini, jangan ragu untuk menghubungi
-            kami melalui:
-          </p>
-          <ul className="list-none pl-0 space-y-2">
-            <li className="flex items-center space-x-3">
-              <Mail className="w-4 h-4" />
-              <Link href="mailto:hello@anisart.studio" className="hover:text-orange-600 transition-colors">
-                hello@anisart.studio
-              </Link>
-            </li>
-            <li className="flex items-center space-x-3">
-              <MessageCircle className="w-4 h-4" />
-              <Link
-                href="https://wa.me/6285155151007"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-600 transition-colors"
-              >
-                WhatsApp Kami
-              </Link>
-            </li>
-            <li className="flex items-center space-x-3">
-              <Instagram className="w-4 h-4" />
-              <Link
-                href="https://instagram.com/anisart.studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-600 transition-colors"
-              >
-                @anisart.studio
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </main>
+      {/* Privacy Policy Content */}
+      <FadeInSection threshold={0.1} delay={100}>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl lg:text-4xl font-serif text-stone-800 mb-8 text-center">Kebijakan Privasi</h2>
+              <div className="prose prose-stone max-w-none">
+                <p>
+                  Selamat datang di Anisart Studio. Kami sangat menghargai privasi Anda. Kebijakan Privasi ini
+                  menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda saat Anda
+                  mengunjungi situs web kami atau menggunakan layanan kami.
+                </p>
 
-      {/* Footer - Replicated from app/page.tsx for consistency */}
+                <h3>Informasi yang Kami Kumpulkan</h3>
+                <p>Kami dapat mengumpulkan berbagai jenis informasi dari Anda, termasuk:</p>
+                <ul>
+                  <li>
+                    <strong>Informasi Pribadi:</strong> Nama, alamat email, alamat pengiriman, nomor telepon, dan
+                    informasi pembayaran saat Anda melakukan pembelian atau mendaftar akun.
+                  </li>
+                  <li>
+                    <strong>Data Penggunaan:</strong> Informasi tentang bagaimana Anda mengakses dan menggunakan situs
+                    web kami, seperti alamat IP, jenis browser, halaman yang dikunjungi, waktu kunjungan, dan data
+                    diagnostik lainnya.
+                  </li>
+                  <li>
+                    <strong>Data Cookie:</strong> Kami menggunakan cookie dan teknologi pelacakan serupa untuk melacak
+                    aktivitas di situs web kami dan menyimpan informasi tertentu.
+                  </li>
+                </ul>
+
+                <h3>Bagaimana Kami Menggunakan Informasi Anda</h3>
+                <p>Kami menggunakan informasi yang kami kumpulkan untuk berbagai tujuan, termasuk:</p>
+                <ul>
+                  <li>Memproses pesanan Anda dan mengelola akun Anda.</li>
+                  <li>Menyediakan, mengoperasikan, dan memelihara situs web kami.</li>
+                  <li>Meningkatkan, mempersonalisasi, dan memperluas situs web kami.</li>
+                  <li>Memahami dan menganalisis bagaimana Anda menggunakan situs web kami.</li>
+                  <li>Mengembangkan produk, layanan, fitur, dan fungsionalitas baru.</li>
+                  <li>
+                    Berkomunikasi dengan Anda, baik secara langsung maupun melalui salah satu mitra kami, termasuk untuk
+                    layanan pelanggan, untuk memberi Anda pembaruan dan informasi lain yang berkaitan dengan situs web,
+                    dan untuk tujuan pemasaran dan promosi.
+                  </li>
+                  <li>Mengirimkan email kepada Anda.</li>
+                  <li>Mencegah penipuan.</li>
+                </ul>
+
+                <h3>Pembagian Informasi Anda</h3>
+                <p>
+                  Kami tidak menjual, memperdagangkan, atau menyewakan informasi pribadi Anda kepada pihak ketiga. Kami
+                  dapat membagikan informasi Anda dengan pihak ketiga dalam situasi berikut:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Penyedia Layanan:</strong> Kami dapat mempekerjakan perusahaan dan individu pihak ketiga
+                    untuk memfasilitasi layanan kami (misalnya, pemrosesan pembayaran, pengiriman). Pihak ketiga ini
+                    memiliki akses ke informasi pribadi Anda hanya untuk melakukan tugas-tugas ini atas nama kami dan
+                    berkewajiban untuk tidak mengungkapkan atau menggunakannya untuk tujuan lain.
+                  </li>
+                  <li>
+                    <strong>Kepatuhan Hukum:</strong> Kami dapat mengungkapkan informasi pribadi Anda jika diwajibkan
+                    oleh hukum atau sebagai tanggapan atas permintaan yang sah oleh otoritas publik (misalnya, perintah
+                    pengadilan atau permintaan pemerintah).
+                  </li>
+                </ul>
+
+                <h3>Keamanan Data</h3>
+                <p>
+                  Keamanan informasi pribadi Anda sangat penting bagi kami. Kami berusaha untuk menggunakan cara yang
+                  dapat diterima secara komersial untuk melindungi informasi pribadi Anda, tetapi ingat bahwa tidak ada
+                  metode transmisi melalui Internet, atau metode penyimpanan elektronik yang 100% aman.
+                </p>
+
+                <h3>Perubahan pada Kebijakan Privasi Ini</h3>
+                <p>
+                  Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Kami akan memberi tahu Anda tentang
+                  perubahan apa pun dengan memposting Kebijakan Privasi baru di halaman ini. Anda disarankan untuk
+                  meninjau Kebijakan Privasi ini secara berkala untuk setiap perubahan.
+                </p>
+
+                <h3>Hubungi Kami</h3>
+                <p>Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami:</p>
+                <ul>
+                  <li>
+                    Melalui email: <Link href="mailto:hello@anisart.studio">hello@anisart.studio</Link>
+                  </li>
+                  <li>
+                    Melalui WhatsApp:{" "}
+                    <Link href="https://wa.me/6285155151007" target="_blank" rel="noopener noreferrer">
+                      WhatsApp Kami
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* Footer */}
       <footer id="kontak" className="bg-stone-800 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
@@ -153,6 +172,8 @@ export default function KebijakanPrivasiPage() {
                   width={40}
                   height={40}
                   className="rounded-full"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
                 />
                 <div>
                   <h3 className="text-xl font-serif">Anisart</h3>
@@ -175,7 +196,7 @@ export default function KebijakanPrivasiPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/katalog" className="hover:text-white transition-colors">
+                  <Link href="/#koleksi" className="hover:text-white transition-colors">
                     Koleksi
                   </Link>
                 </li>
@@ -185,7 +206,7 @@ export default function KebijakanPrivasiPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/tentang" className="hover:text-white transition-colors">
+                  <Link href="/#tentang" className="hover:text-white transition-colors">
                     Tentang Kami
                   </Link>
                 </li>
