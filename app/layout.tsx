@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
+import { SpeedInsights } from "@vercel/speed-insights/next" // Added import
 
 export const metadata: Metadata = {
   title: "Anisart | Handmade Resin Etnik dengan Bunga Asli & Custom Gift Unik",
@@ -29,7 +30,10 @@ html {
 }
         `}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights /> {/* Added SpeedInsights component */}
+      </body>
     </html>
   )
 }

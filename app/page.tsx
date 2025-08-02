@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Heart, Flower, Sparkles, Star, Instagram, MessageCircle, Mail, Phone } from "lucide-react"
+import { Heart, Flower, Sparkles, Star, Instagram, MessageCircle, Mail } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { FadeInSection } from "@/components/ui/fade-in-section" // Import FadeInSection
@@ -524,10 +524,16 @@ export default function AnisartLanding() {
                     hello@anisart.studio
                   </Link>
                 </div>
+                {/* Removed Phone number and icon */}
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-4 h-4" />
-                  <Link href="tel:+6281234567890" className="hover:text-white transition-colors">
-                    +62 812-3456-7890
+                  <MessageCircle className="w-4 h-4" /> {/* WhatsApp Icon */}
+                  <Link
+                    href="https://wa.me/6285155151007"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    WhatsApp Kami
                   </Link>
                 </div>
                 <div className="flex items-center space-x-3">

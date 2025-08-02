@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Mail, Phone, Instagram } from "lucide-react"
+import { Mail, Instagram, MessageCircle } from "lucide-react" // Import MessageCircle
 
 export const metadata = {
   title: "Hubungi Anisart | Konsultasi Kado Custom & Kerajinan Handmade",
@@ -22,9 +22,17 @@ export default function KontakPage() {
           <Mail className="w-5 h-5" />
           <span>hello@anisart.studio</span>
         </div>
+        {/* Removed Phone number and icon */}
         <div className="flex items-center justify-center space-x-3">
-          <Phone className="w-5 h-5" />
-          <span>+62 812-3456-7890</span>
+          <MessageCircle className="w-5 h-5" /> {/* WhatsApp Icon */}
+          <Link
+            href="https://wa.me/6285155151007"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-orange-600 transition-colors"
+          >
+            WhatsApp Kami
+          </Link>
         </div>
         <div className="flex items-center justify-center space-x-3">
           <Instagram className="w-5 h-5" />
