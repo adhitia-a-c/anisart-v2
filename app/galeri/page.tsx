@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { allProducts, type Product } from "@/lib/products"
 import { useState, useCallback } from "react"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog" // Removed DialogTrigger import
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 
 export default function GaleriPage() {
@@ -55,7 +55,6 @@ export default function GaleriPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 w-full max-w-6xl">
         {filteredProducts.map((product) => (
-          // Removed DialogTrigger here
           <div
             key={product.id}
             onClick={() => handleProductClick(product)}
@@ -68,6 +67,9 @@ export default function GaleriPage() {
               style={{ objectFit: "cover" }}
               className="transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              placeholder="blur" // Added placeholder blur
+              // For remote images, you would typically provide a blurDataURL here:
+              // blurDataURL="data:image/png;base64,..."
             />
             <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
               <span className="text-white text-lg font-semibold">{product.name}</span>
@@ -89,6 +91,9 @@ export default function GaleriPage() {
                     fill
                     style={{ objectFit: "contain" }}
                     className="bg-stone-100"
+                    placeholder="blur" // Added placeholder blur
+                    // For remote images, you would typically provide a blurDataURL here:
+                    // blurDataURL="data:image/png;base64,..."
                   />
                 </div>
                 <p className="mb-2">{selectedProduct.description}</p>
